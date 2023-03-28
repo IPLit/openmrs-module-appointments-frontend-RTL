@@ -2,8 +2,8 @@
 
 angular.module('bahmni.appointments')
     .service('calendarViewPopUp', ['$rootScope', 'ngDialog', '$state','$window', '$translate', 'appointmentsService',
-        'confirmBox', 'checkinPopUp', 'appService', 'messagingService', 'appointmentCommonService',
-        function ($rootScope, ngDialog, $state, $window, $translate, appointmentsService, confirmBox, checkinPopUp, appService, messagingService, appointmentCommonService) {
+        'confirmBox', 'checkinPopUp', 'appService', 'messagingService', 'appointmentCommonService', 'LZString',
+        function ($rootScope, ngDialog, $state, $window, $translate, appointmentsService, confirmBox, checkinPopUp, appService, messagingService, appointmentCommonService, LZString) {
             var calendarViewPopUp = function (config) {
                 var popUpScope = $rootScope.$new();
                 var dialog;
