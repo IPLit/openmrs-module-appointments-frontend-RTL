@@ -14,6 +14,7 @@ angular.module('bahmni.appointments')
             };
 
             $scope.deleteAppointmentService = function (service) {
+                service.name = appointmentsServiceService.decodeDecompress(service.name);
                 ngDialog.open({
                     plain: true,
                     template: require('../../views/admin/deleteAppointmentService.html'),
