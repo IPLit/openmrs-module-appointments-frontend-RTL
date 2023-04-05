@@ -11,7 +11,7 @@
                         {{'APPOINTMENT_SERVICE_NAME_KEY' | translate}}<span class="asterick">*</span>
                     </label>
                     <input placeholder="{{ ::'PLACEHOLDER_SERVICE_NAME' | translate }}" id="name" name="name"
-                           type="text" ng-disabled="service.uuid" maxlength="50"
+                           type="text" maxlength="50"
                            ng-change="validateServiceName()" ng-model="service.name" required/>
                 </p>
                 <p class="caution" ng-show="createServiceForm.name.$error.uniqueServiceName">
