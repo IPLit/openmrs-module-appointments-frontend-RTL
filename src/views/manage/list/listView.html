@@ -45,7 +45,7 @@
                 <td ng-show="::enableSpecialities">{{::appointment.service.speciality.name}}</td>
                 <td class="table-mid-width">{{::decode(appointment.service.name)}}</td>
                 <td class="table-mid-width" ng-show="::enableServiceTypes">{{::appointment.serviceType && (appointment.serviceType.name + ' [' + appointment.serviceType.duration + ' min]')}}</td>
-                <td>{{appointment.status}}</td>
+                <td>{{ ::appointment.status | uppercase | translate }}</td>
                 <td>{{:: isWalkIn(appointment.appointmentKind)}}</td>
                 <td class="table-mid-width">{{::appointment.location.name}}</td>
                 <td class="table-mid-width">{{display(appointment.additionalInfo)}}</td>
