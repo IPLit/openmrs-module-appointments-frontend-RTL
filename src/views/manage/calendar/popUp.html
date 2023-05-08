@@ -15,7 +15,7 @@
         <p ng-show="appointment.serviceType"><b>{{::'APPOINTMENT_SERVICE_TYPE_FULL' |
             translate}}:</b> {{appointment.serviceType.name}}</p>
         <p ng-show="appointment.status"><b>{{::'APPOINTMENT_STATUS' | translate}}:</b>
-            {{appointment.status}}</p>
+            {{::appointment.status | uppercase | translate }}</p>
     </div>
     <p ng-if="scope.appointments[0].providers">
         <b>{{::'APPOINTMENT_PROVIDER' | translate}}:</b>
