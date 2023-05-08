@@ -2,7 +2,7 @@
 
 angular.module('bahmni.appointments')
     .directive('weekPicker', function () {
-        var controller = ['$scope', function ($scope) {
+        var controller = ['$scope', '$window', function ($scope, $window) {
             var dateUtil = Bahmni.Common.Util.DateUtil;
             var init = function () {
                 if (!$scope.viewDate) {
@@ -44,6 +44,8 @@ angular.module('bahmni.appointments')
             });
 
             $scope.changeFormat = function (date) {
+             var locale = $window.localStorage["NG_TRANSLATE_LANG_KEY"] || "en";
+             moment.locale(locale);
                 return moment(date).format('D MMM');
             };
 
