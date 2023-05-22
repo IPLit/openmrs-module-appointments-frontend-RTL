@@ -44,7 +44,7 @@ angular.module('bahmni.appointments')
                 for (var i = $scope.weekStartDate;
                      Bahmni.Common.Util.DateUtil.isBeforeDate(i, $scope.weekEndDate);
                      i = Bahmni.Common.Util.DateUtil.addDays(i, 1)) {
-                    var weekDate = {date: moment(i).format("YYYY-MM-DD")};
+                    var weekDate = {date: moment(i).lang("en").format("YYYY-MM-DD")};
                     weekDate.total = _.reduce($scope.appointments, function (total, appointment) {
                         var appointmentCount = appointment.appointmentCountMap[weekDate.date];
                         if (!appointmentCount) {
