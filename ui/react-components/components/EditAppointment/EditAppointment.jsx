@@ -537,8 +537,11 @@ const EditAppointment = props => {
             <div className={classNames(recurringContainer)}>
                 <div className={classNames(recurringContainerLeft)}>
                     <div data-testid="date-selector">
-                        <div className={classNames(dateHeading)}><Label translationKey='CHANGE_DATE_TO_LABEL'
-                                                                        defaultValue={`Change ${moment(originalAppointmentDate).format('Do MMM')} to`}/></div>
+                        <div className={classNames(dateHeading)}>
+                            <Label translationKey='CHANGE_DATE_TO_LABEL' defaultValue={"Change"} />
+                            {moment(originalAppointmentDate).format('Do MMM')}
+                            <Label translationKey='APPOINTMENT_TIME_TO_LABEL' defaultValue={"to"} />
+                        </div>
                         <AppointmentDatePicker
                             onChange={date => {
                                 updateAppointmentDetails({appointmentDate: date});
@@ -555,7 +558,9 @@ const EditAppointment = props => {
                         </div>
                         <div className={classNames(currentTimeSlot)}>
                             <span>{currentStartTime}</span>
-                            <span> to </span>
+                            <span>
+                                <Label translationKey="APPOINTMENT_TIME_TO_LABEL" defaultValue="to"/>
+                            </span>
                             <span>{currentEndTime}</span>
                         </div>
                         <div className={classNames(dateHeading)}>
