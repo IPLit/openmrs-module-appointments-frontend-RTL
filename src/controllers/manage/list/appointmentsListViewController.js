@@ -274,6 +274,9 @@ angular.module('bahmni.appointments')
 
             $scope.printPage = function () {
                 var printTemplateUrl = appService.getAppDescriptor().getConfigValue("printListViewTemplateUrl") || 'views/manage/list/defaultListPrint.html';
+                _.forEach($scope.filteredAppointments, function (appointment) {
+                    appointment.service.name = $scope.decode(appointment.service.name);
+                });
                 printer.print(printTemplateUrl, {
                     searchedPatient: $scope.searchedPatient,
                     filteredAppointments: $scope.filteredAppointments,
