@@ -5,6 +5,7 @@ import {getLocale} from "../../utils/LocalStorageUtil";
 import {getMessages} from "../AppContext/AppService";
 import PropTypes from "prop-types";
 import {CANCEL_CONFIRMATION_MESSAGE_ADD, CANCEL_CONFIRMATION_MESSAGE_EDIT} from "../../constants";
+import messages_ar from "../../translations/ar.json";
 
 const CancelConfirmationWrapper = props => {
 
@@ -18,8 +19,9 @@ const CancelConfirmationWrapper = props => {
     const getCancelConfirmationMessage = () => props.appointmentUuid
       ? CANCEL_CONFIRMATION_MESSAGE_EDIT : CANCEL_CONFIRMATION_MESSAGE_ADD;
 
+    const cancelConfMessages = locale === "ar" ? messages_ar : messages;
     return (
-        <IntlProvider defaultLocale='en' locale={locale} messages={messages}>
+        <IntlProvider defaultLocale='en' locale={locale} messages={cancelConfMessages}>
             <CancelConfirmation {...getCancelConfirmationMessage()}
                                 onBack={props.onBack} close={props.close}/>
         </IntlProvider>
