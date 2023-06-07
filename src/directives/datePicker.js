@@ -2,7 +2,7 @@
 
 angular.module('bahmni.appointments')
     .directive('datePicker', function () {
-        var controller = ['$scope', function ($scope) {
+        var controller = ['$scope', '$window', function ($scope, $window) {
             var dateUtil = Bahmni.Common.Util.DateUtil;
             var init = function () {
                 if (!$scope.viewDate) {
@@ -16,6 +16,22 @@ angular.module('bahmni.appointments')
                     $scope.lastValidDate = $scope.viewDate;
                     $scope.onChange($scope.viewDate);
                 }
+            };
+
+            $scope.getLeftAngleClass = function () {
+                var locale = $window.localStorage["NG_TRANSLATE_LANG_KEY"] || "en";
+                if (locale === 'ar') {
+                    return "fa-angle-right";
+                }
+                return "fa-angle-left";
+            };
+
+            $scope.getRightAngleClass = function () {
+                var locale = $window.localStorage["NG_TRANSLATE_LANG_KEY"] || "en";
+                if (locale === 'ar') {
+                    return "fa-angle-left";
+                }
+                return "fa-angle-right";
             };
 
             $scope.goToPrevious = function () {

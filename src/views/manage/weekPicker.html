@@ -4,10 +4,10 @@
     <button class="app-today-btn" disabled ng-show="showButtons">{{::'WEEK' |translate}}</button>
     <button class="app-today-btn" ng-click="$parent.toggleWeekView()"
             ng-show="showButtons">{{::'DAY' |translate}}</button>
-    <button class="app-view-prev" ng-click="goToPreviousWeek()"><i class="fa fa-angle-left"></i></button>
+    <button class="app-view-prev" ng-click="goToPreviousWeek()"><i class="fa" ng-class="getLeftAngleClass()"></i></button>
     <span>
         <label for="weeklyDate">{{changeFormat(weekStartDate)}} - {{changeFormat(weekEndDate)}}</label>
         <input id="weeklyDate" type="date" ng-model="viewDate" required/>
     </span>
-    <button type="button" ng-click="goToNextWeek()"><i class="fa fa-angle-right"></i></button>
+    <button type="button" ng-click="goToNextWeek()"><i class="fa" ng-class="getRightAngleClass()"></i></button>
 </div>

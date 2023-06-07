@@ -22,6 +22,22 @@ angular.module('bahmni.appointments')
                 $scope.viewDate = $scope.viewDate && dateUtil.addDays($scope.viewDate, 7);
             };
 
+            $scope.getLeftAngleClass = function () {
+                var locale = $window.localStorage["NG_TRANSLATE_LANG_KEY"] || "en";
+                if (locale === 'ar') {
+                    return "fa-angle-right";
+                }
+                return "fa-angle-left";
+            };
+
+            $scope.getRightAngleClass = function () {
+                var locale = $window.localStorage["NG_TRANSLATE_LANG_KEY"] || "en";
+                if (locale === 'ar') {
+                    return "fa-angle-left";
+                }
+                return "fa-angle-right";
+            };
+
             var setWeekStartDate = function (date) {
                 var daysToBeSubtracted = daysToSubtract(date, $scope.weekStart);
                 $scope.weekStartDate = moment(date).subtract(daysToBeSubtracted, 'days').toDate();
