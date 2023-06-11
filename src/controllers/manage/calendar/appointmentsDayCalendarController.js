@@ -2,11 +2,16 @@
 
 angular.module('bahmni.appointments')
     .controller('AppointmentsDayCalendarController', ['$scope', '$rootScope', '$state', 'uiCalendarConfig', 'appService',
-        'calendarViewPopUp', 'checkinPopUp', '$location', 'appointmentsService',
+        'calendarViewPopUp', 'checkinPopUp', '$location', 'appointmentsService', '$window',
         function ($scope, $rootScope, $state, uiCalendarConfig, appService, calendarViewPopUp, checkinPopUp,
-        $location, appointmentsService) {
+        $location, appointmentsService, $window) {
+            const arDayNames = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
             $scope.eventSources = [];
             var init = function () {
+                var locale = $window.localStorage["NG_TRANSLATE_LANG_KEY"] || "en";
+                if (locale === "ar") {
+                    $scope.dayNames = arDayNames;
+                }
                 $scope.events = $scope.appointments.events;
                 $scope.alertOnEventClick = function (event, jsEvent, view) {
                     var checkinAppointment = function (patient, patientAppointment) {
@@ -85,7 +90,7 @@ angular.module('bahmni.appointments')
                     return !(Bahmni.Common.Util.DateUtil.isBeforeDate($scope.date, moment().startOf('day')));
                 };
 
-                const openPopupIfAppointmentInUrl = function(){
+                const openPopupIfAppointmentInUrl = function () {
                     if (!$location.search()["appointment"]) return;
                     let uuid = $location.search()["appointment"];
                     appointmentsService.getAppointmentByUuid(uuid).then(function (response) {
@@ -122,7 +127,8 @@ angular.module('bahmni.appointments')
                         eventDrop: $scope.alertOnDrop,
                         eventResize: $scope.alertOnResize,
                         eventRender: $scope.eventRender,
-                        schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source'
+                        schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+                        dayNames: $scope.dayNames
                     }
                 };
 
