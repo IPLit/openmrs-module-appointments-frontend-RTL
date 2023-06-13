@@ -1,10 +1,15 @@
 'use strict';
 
 angular.module('bahmni.appointments')
-    .controller('AppointmentsWeekCalendarController', ['$scope', '$rootScope', '$state', 'uiCalendarConfig', 'appService', 'calendarViewPopUp', 'checkinPopUp', 'spinner', 'appointmentsService', 'appointmentsFilter',
-        function ($scope, $rootScope, $state, uiCalendarConfig, appService, calendarViewPopUp, checkinPopUp, spinner, appointmentsService, appointmentsFilter) {
+    .controller('AppointmentsWeekCalendarController', ['$scope', '$rootScope', '$state', 'uiCalendarConfig', 'appService', 'calendarViewPopUp', 'checkinPopUp', 'spinner', 'appointmentsService', 'appointmentsFilter', '$window',
+        function ($scope, $rootScope, $state, uiCalendarConfig, appService, calendarViewPopUp, checkinPopUp, spinner, appointmentsService, appointmentsFilter, $window) {
             $scope.eventSources = [];
+            const arDayNames = ["أحد", "إثنين", "ثلاثاء", "أربعاء", "خميس", "جمعة", "سبتg"];
             var init = function () {
+                var locale = $window.localStorage["NG_TRANSLATE_LANG_KEY"] || "en";
+                if (locale === "ar") {
+                    $scope.dayNames = arDayNames;
+                }
                 $scope.events = $scope.appointments.events;
                 $scope.alertOnEventClick = function (event, jsEvent, view) {
                     var checkinAppointment = function (patient, patientAppointment) {
@@ -111,7 +116,8 @@ angular.module('bahmni.appointments')
                         eventRender: $scope.eventRender,
                         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
                         firstDay: Bahmni.Appointments.Constants.weekDays[appService.getAppDescriptor().getConfigValue('startOfWeek')]
-                            || Bahmni.Appointments.Constants.defaultWeekStartDayName
+                            || Bahmni.Appointments.Constants.defaultWeekStartDayName,
+                        dayNamesShort: $scope.dayNames
                     }
                 };
 
