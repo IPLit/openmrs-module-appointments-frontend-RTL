@@ -180,6 +180,7 @@
   "APPOINTMENT_CANCEL_CONFIRMATION_YES"	: "نعم",
   "NO_SERVICE_DATE_CONFLICTS"	: "يوجد مشكلة في تاريخ الخدمة",
   "APPOINTMENT_MODIFY_INFORMATION"	: "تعديل المعلومات",
-  "APPOINTMENT_SAVE_ANYWAY"	: "حفظ على أية حال"
+  "APPOINTMENT_SAVE_ANYWAY"	: "حفظ على أية حال",
+  "Appointment_Scheduling": "إدارة المواعيد"
 
  }
